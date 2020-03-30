@@ -1,0 +1,65 @@
+import java.util.*;
+
+  public class SudokuSolver{
+  public void main (){
+    ArrayList <Integer> allNums = new ArrayList<Integer>();
+    for (int i = 0; i < 81; i++){
+      allnums(i) = -1;
+    }
+    ArrayList <Int[]> coordinates = new ArrayList<Int[]>();
+      for (int i = 0; i < 81; i++){
+        coordinates(i) = i / 10, i % 10;
+      }
+  }
+
+  public boolean rowIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
+  for (int i = firstSquareIndex; i < 9; i++){
+      if(allNums(i) == numToCheckFor) return false;
+    }
+    return true;
+  }
+  
+  public boolean columnIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
+      for (int i = firstColumIndex; i < 81; i += 9){
+        if(allNums(i) == numToCheckFor) return false;
+      }
+      return true;
+    }
+   
+   public boolean cubeIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
+      firstSquareIndex -= 9;
+      for (int i = 0; i < 3; i++){
+      firstSquareIndex += 9;
+        for (int k = 0; k < 3; k++){
+          if( numToCheckFor == allNums(firstSquareIndex + k)) return false; 
+        }
+      }
+      return true;
+   }
+   
+   public boolean numberCanGoThere (ArrayList allNums, int numToCheckFor, int squareIndex){
+      int firstSquareIndexForRow = squareIndex / 9;
+      firstSquareIndexForRow *= 9;
+      
+      int firstSquareIndexForColumn = squareIndex % 9;
+      
+      int firstSquareIndexForCube = squareIndex / 3;
+      firstSquareIndexForCube *= 3;
+      int temp = firstSquareIndexForCube;
+      temp /= 9;
+      temp %= 3;
+      temp *= 9;
+      firstSquareIndexForCube -= temp;
+      
+      if (rowIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForRow) && 
+      columnIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForColumn) && 
+      columnIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForColumn)){
+          return true;
+      }
+      
+      return false;
+   }
+   
+  
+
+}
