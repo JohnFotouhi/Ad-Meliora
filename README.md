@@ -1,2 +1,2 @@
 # CrossWord Solver
-Java logic behind solving any crossword project, to be used in android applications.
+Java logic behind solving any sudoku puzzle, to be used in android applications.
