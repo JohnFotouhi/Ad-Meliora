@@ -1,2 +1,2 @@
-# Ad-Meliora
-Playground for working with excel in java.
+# CrossWord Solver
+Java logic behind solving any crossword project, to be used in android applications.
