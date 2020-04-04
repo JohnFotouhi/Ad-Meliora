@@ -16,7 +16,7 @@ public class Main{
                 
                 for( int k = 0; k < 9; k++){
                    square = (((i / 3) * 3) + (k / 3));
-                   cells.get(i).add(new Cell(i, k, square, nums[totalCells] != 0, nums[totalCells]));
+                   cells.get(i).add(new Cell(i, k, square, nums[totalCells]));
                    totalCells ++;
                 }
             }
@@ -60,20 +60,6 @@ public class Main{
                  }
                }
             }
-      }
-        
-      public Cell nextGuess (ArrayList<ArrayList<Cell>> cells){
-          for (int i = 0; i < 9; i ++){
-              for (int k = 0; k < 9; k++) {
-                  if (cells.get(i).get(k).value == 0){
-                      if (cells.get(i).get(k).nextPossibleGuess(cells)){
-                          return cells.get(i).get(k);
-                     }
-                     return null;
-                    }
-              }
-          }
-          return cells.get(8).get(8);  
       }
 }
 
