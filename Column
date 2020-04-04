@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class Column{
+  ArrayList<Cell> column;
+  
+  Column(ArrayList<Cell> col){
+    column = col;
+  }
+  
+}
+
