@@ -1,0 +1,9 @@
+import java.util.*;
+
+public class Row{
+ArrayList<Column> row;
+
+  Row(ArrayList<Column> r){
+    row = r;    
+  }
+}
