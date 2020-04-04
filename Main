@@ -1,65 +1,79 @@
 import java.util.*;
+    
+public class Main{
+      ArrayList <ArrayList<Cell>>  cells = new ArrayList <ArrayList<Cell>>();
 
-  public class SudokuSolver{
-  public void main (){
-    ArrayList <Integer> allNums = new ArrayList<Integer>();
-    for (int i = 0; i < 81; i++){
-      allnums(i) = -1;
-    }
-    ArrayList <Int[]> coordinates = new ArrayList<Int[]>();
-      for (int i = 0; i < 81; i++){
-        coordinates(i) = i / 10, i % 10;
+      public void main (int[] nums){
+            
+            ArrayList <ArrayList<Cell>>  cells = new ArrayList <ArrayList<Cell>>();
+            
+            //The first for loop corresponds to the Rows.
+            //The Second for loop corresponds to the Columns.
+            int totalCells = 0;
+            int square = 0;
+            for (int i = 0; i < 9; i++){
+                cells.add(new ArrayList<Cell>());
+                
+                for( int k = 0; k < 9; k++){
+                   square = (((i / 3) * 3) + (k / 3));
+                   cells.get(i).add(new Cell(i, k, square, nums[totalCells] != 0, nums[totalCells]));
+                   totalCells ++;
+                }
+            }
+            
+            bruteForceAlgorithm(cells);
+            
+            for (int i = 0; i < 9; i ++){
+                for (int l = 0; l < 9; l++){
+                    System.out.println (cells.get(i).get(l).value);
+                }
+            }
       }
-  }
-
-  public boolean rowIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
-  for (int i = firstSquareIndex; i < 9; i++){
-      if(allNums(i) == numToCheckFor) return false;
-    }
-    return true;
-  }
-  
-  public boolean columnIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
-      for (int i = firstColumIndex; i < 81; i += 9){
-        if(allNums(i) == numToCheckFor) return false;
+        
+      public void bruteForceAlgorithm (ArrayList<ArrayList<Cell>> cells) {
+          ArrayList <Cell> guesses = new ArrayList <Cell>();
+          
+            int stopper = 0;
+            int stopper2 = 0;
+            int rowCoordinate = 0;
+            int columnCoordinate = 0;
+            
+           for (int i = 0; i < 9; i++){
+               for (int k = 0; k < 9; k ++){
+                   if (cells.get(i).get(k).value == 0){
+                   if (cells.get(i).get(k).nextPossibleGuess(cells)){
+                       guesses.add(cells.get(i).get(k));
+                   }
+                   else {
+                       while (guesses.size() > 0){
+                           if (!guesses.get(guesses.size() - 1).nextPossibleGuess(cells)){
+                               guesses.remove(guesses.size() - 1);
+                           }
+                           else {
+                                break;
+                           }
+                       }
+                       k = guesses.get (guesses.size() - 1).column;
+                       i = guesses.get (guesses.size() - 1).row;
+                      
+                    }
+                 }
+               }
+            }
       }
-      return true;
-    }
-   
-   public boolean cubeIsClearOfNumber (ArrayList allNums, int numToCheckFor, int firstSquareIndex){
-      firstSquareIndex -= 9;
-      for (int i = 0; i < 3; i++){
-      firstSquareIndex += 9;
-        for (int k = 0; k < 3; k++){
-          if( numToCheckFor == allNums(firstSquareIndex + k)) return false; 
-        }
+        
+      public Cell nextGuess (ArrayList<ArrayList<Cell>> cells){
+          for (int i = 0; i < 9; i ++){
+              for (int k = 0; k < 9; k++) {
+                  if (cells.get(i).get(k).value == 0){
+                      if (cells.get(i).get(k).nextPossibleGuess(cells)){
+                          return cells.get(i).get(k);
+                     }
+                     return null;
+                    }
+              }
+          }
+          return cells.get(8).get(8);  
       }
-      return true;
-   }
-   
-   public boolean numberCanGoThere (ArrayList allNums, int numToCheckFor, int squareIndex){
-      int firstSquareIndexForRow = squareIndex / 9;
-      firstSquareIndexForRow *= 9;
-      
-      int firstSquareIndexForColumn = squareIndex % 9;
-      
-      int firstSquareIndexForCube = squareIndex / 3;
-      firstSquareIndexForCube *= 3;
-      int temp = firstSquareIndexForCube;
-      temp /= 9;
-      temp %= 3;
-      temp *= 9;
-      firstSquareIndexForCube -= temp;
-      
-      if (rowIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForRow) && 
-      columnIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForColumn) && 
-      columnIsClearOfNumber(allNums, numToCheckFor, firstSquareIndexForColumn)){
-          return true;
-      }
-      
-      return false;
-   }
-   
-  
-
 }
+
