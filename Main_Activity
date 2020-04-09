@@ -1,0 +1,257 @@
+package com.example.solvesudoku;
+
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.*;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.*;
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button solveButton;
+    Button resetButton;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        solveButton = (Button)findViewById(R.id.button);
+        resetButton = (Button)findViewById(R.id.button2);
+
+        solveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View solveButton) {
+                ArrayList <Integer> nums = new ArrayList <Integer>();
+                setTextViewsToSolvedSudokuValues(nums);
+            }
+
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View resetButton){
+
+                    EditText edit0 = (EditText)findViewById(R.id.editText00);
+                    EditText edit1 = (EditText)findViewById(R.id.editText01);
+                    EditText edit2 = (EditText) findViewById(R.id.editText02);
+                    EditText edit3 = (EditText)findViewById(R.id.editText03);
+                    EditText edit4 = (EditText)findViewById(R.id.editText04);
+                    EditText edit5 = (EditText)findViewById(R.id.editText05);
+                    EditText edit6 = (EditText)findViewById(R.id.editText06);
+                    EditText  edit7 = (EditText)findViewById(R.id.editText07);
+                    EditText  edit8 = (EditText)findViewById(R.id.editText08);
+                    EditText edit9 = (EditText)findViewById(R.id.editText33);
+                    EditText edit10 = (EditText)findViewById(R.id.editText32);
+                    EditText edit11 = (EditText)findViewById(R.id.editText31);
+                    EditText edit12 = (EditText)findViewById(R.id.editText30);
+                    EditText edit13 = (EditText)findViewById(R.id.editText29);
+                    EditText edit14 = (EditText)findViewById(R.id.editText34);
+                    EditText edit15 = (EditText)findViewById(R.id.editText35);
+                    EditText edit16 = (EditText)findViewById(R.id.editText36);
+                    EditText edit17 = (EditText)findViewById(R.id.editText37);
+                    EditText edit18 = (EditText)findViewById(R.id.editText24);
+                    EditText edit19 = (EditText)findViewById(R.id.editText23);
+                    EditText edit20 = (EditText)findViewById(R.id.editText22);
+                    EditText edit21 = (EditText)findViewById(R.id.editText21);
+                    EditText edit22 = (EditText)findViewById(R.id.editText20);
+                    EditText edit23 = (EditText)findViewById(R.id.editText25);
+                    EditText edit24 = (EditText)findViewById(R.id.editText26);
+                    EditText edit25 = (EditText)findViewById(R.id.editText27);
+                    EditText edit26 = (EditText)findViewById(R.id.editText28);
+                    EditText edit27 = (EditText)findViewById(R.id.editText15);
+                    EditText edit28 = (EditText)findViewById(R.id.editText14);
+                    EditText edit29 = (EditText)findViewById(R.id.editText13);
+                    EditText  edit30 = (EditText)findViewById(R.id.editText12);
+                    EditText  edit31 = (EditText)findViewById(R.id.editText10);
+                    EditText  edit32 = (EditText)findViewById(R.id.editText16);
+                    EditText edit33 = (EditText)findViewById(R.id.editText17);
+                    EditText  edit34 = (EditText)findViewById(R.id.editText18);
+                    EditText edit35 = (EditText)findViewById(R.id.editText19);
+                    EditText edit36 = (EditText)findViewById(R.id.editText8);
+                    EditText edit37 = (EditText)findViewById(R.id.editText4);
+                    EditText edit38 = (EditText)findViewById(R.id.editText3);
+                    EditText edit39 = (EditText)findViewById(R.id.editText2);
+                    EditText edit40 = (EditText)findViewById(R.id.Center);
+                    EditText edit41 = (EditText)findViewById(R.id.editText5);
+                    EditText edit42 = (EditText)findViewById(R.id.editText6);
+                    EditText edit43 = (EditText)findViewById(R.id.editText7);
+                    EditText edit44 = (EditText)findViewById(R.id.editText9);
+                    EditText edit45 = (EditText)findViewById(R.id.editText52);
+                    EditText edit46 = (EditText)findViewById(R.id.editText51);
+                    EditText edit47 = (EditText)findViewById(R.id.editText50);
+                    EditText edit48 = (EditText)findViewById(R.id.editText48);
+                    EditText edit49 = (EditText)findViewById(R.id.editText47);
+                    EditText  edit50 = (EditText)findViewById(R.id.editText49);
+                    EditText  edit51 = (EditText)findViewById(R.id.editText53);
+                    EditText  edit52 = (EditText)findViewById(R.id.editText54);
+                    EditText  edit53 = (EditText)findViewById(R.id.editText55);
+                    EditText edit54 = (EditText)findViewById(R.id.editText60);
+                    EditText edit55 = (EditText)findViewById(R.id.editText59);
+                    EditText edit56 = (EditText)findViewById(R.id.editText58);
+                    EditText edit57 = (EditText)findViewById(R.id.editText57);
+                    EditText  edit58 = (EditText)findViewById(R.id.editText56);
+                    EditText edit59 = (EditText)findViewById(R.id.editText61);
+                    EditText edit60 = (EditText)findViewById(R.id.editText63);
+                    EditText edit61 = (EditText)findViewById(R.id.editText64);
+                    EditText edit62 = (EditText)findViewById(R.id.editText65);
+                    EditText edit63 = (EditText)findViewById(R.id.editText75);
+                    EditText edit64 = (EditText)findViewById(R.id.editText74);
+                    EditText edit65 = (EditText)findViewById(R.id.editText69);
+                    EditText edit66 = (EditText)findViewById(R.id.editText68);
+                    EditText edit67 = (EditText)findViewById(R.id.editText66);
+                    EditText edit68 = (EditText)findViewById(R.id.editText70);
+                    EditText edit69 = (EditText)findViewById(R.id.editText71);
+                    EditText edit70 = (EditText)findViewById(R.id.editText72);
+                    EditText edit71 = (EditText)findViewById(R.id.editText73);
+                    EditText edit72 = (EditText)findViewById(R.id.editText85);
+                    EditText edit73 = (EditText)findViewById(R.id.editText84);
+                    EditText edit74 = (EditText)findViewById(R.id.editText83);
+                    EditText edit75 = (EditText)findViewById(R.id.editText81);
+                    EditText edit76 = (EditText)findViewById(R.id.editText76);
+                    EditText edit77 = (EditText)findViewById(R.id.editText77);
+                    EditText edit78 = (EditText)findViewById(R.id.editText78);
+                    EditText edit79 = (EditText)findViewById(R.id.editText79);
+                    EditText edit80 = (EditText)findViewById(R.id.editText80);
+
+                    EditText[] editTexts = {edit0, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, edit10, edit11, edit12, edit13, edit14, edit15, edit16, edit17, edit18, edit19, edit20, edit21, edit22, edit23, edit24, edit25, edit26, edit27, edit28, edit29, edit30, edit31, edit32, edit33, edit34, edit35, edit36, edit37, edit38, edit39, edit40, edit41, edit42, edit43, edit44, edit45, edit46, edit47, edit48, edit49, edit50, edit51, edit52, edit53, edit54, edit55, edit56, edit57, edit58, edit59, edit60, edit61, edit62, edit63, edit64, edit65, edit66, edit67, edit68, edit69, edit70, edit71, edit72, edit73, edit74, edit75, edit76, edit77, edit78, edit79, edit80};
+
+                    for (int i = 0; i < 81; i ++){
+                        editTexts[i].setText("");
+                    }
+            }
+        });
+    }
+
+    private void setTextViewsToSolvedSudokuValues(ArrayList <Integer> nums){
+        EditText edit0 = (EditText)findViewById(R.id.editText00);
+        EditText edit1 = (EditText)findViewById(R.id.editText01);
+        EditText edit2 = (EditText) findViewById(R.id.editText02);
+        EditText edit3 = (EditText)findViewById(R.id.editText03);
+        EditText edit4 = (EditText)findViewById(R.id.editText04);
+        EditText edit5 = (EditText)findViewById(R.id.editText05);
+        EditText edit6 = (EditText)findViewById(R.id.editText06);
+        EditText  edit7 = (EditText)findViewById(R.id.editText07);
+        EditText  edit8 = (EditText)findViewById(R.id.editText08);
+        EditText edit9 = (EditText)findViewById(R.id.editText33);
+        EditText edit10 = (EditText)findViewById(R.id.editText32);
+        EditText edit11 = (EditText)findViewById(R.id.editText31);
+        EditText edit12 = (EditText)findViewById(R.id.editText30);
+        EditText edit13 = (EditText)findViewById(R.id.editText29);
+        EditText edit14 = (EditText)findViewById(R.id.editText34);
+        EditText edit15 = (EditText)findViewById(R.id.editText35);
+        EditText edit16 = (EditText)findViewById(R.id.editText36);
+        EditText edit17 = (EditText)findViewById(R.id.editText37);
+        EditText edit18 = (EditText)findViewById(R.id.editText24);
+        EditText edit19 = (EditText)findViewById(R.id.editText23);
+        EditText edit20 = (EditText)findViewById(R.id.editText22);
+        EditText edit21 = (EditText)findViewById(R.id.editText21);
+        EditText edit22 = (EditText)findViewById(R.id.editText20);
+        EditText edit23 = (EditText)findViewById(R.id.editText25);
+        EditText edit24 = (EditText)findViewById(R.id.editText26);
+        EditText edit25 = (EditText)findViewById(R.id.editText27);
+        EditText edit26 = (EditText)findViewById(R.id.editText28);
+        EditText edit27 = (EditText)findViewById(R.id.editText15);
+        EditText edit28 = (EditText)findViewById(R.id.editText14);
+        EditText edit29 = (EditText)findViewById(R.id.editText13);
+        EditText  edit30 = (EditText)findViewById(R.id.editText12);
+        EditText  edit31 = (EditText)findViewById(R.id.editText10);
+        EditText  edit32 = (EditText)findViewById(R.id.editText16);
+        EditText edit33 = (EditText)findViewById(R.id.editText17);
+        EditText  edit34 = (EditText)findViewById(R.id.editText18);
+        EditText edit35 = (EditText)findViewById(R.id.editText19);
+        EditText edit36 = (EditText)findViewById(R.id.editText8);
+        EditText edit37 = (EditText)findViewById(R.id.editText4);
+        EditText edit38 = (EditText)findViewById(R.id.editText3);
+        EditText edit39 = (EditText)findViewById(R.id.editText2);
+        EditText edit40 = (EditText)findViewById(R.id.Center);
+        EditText edit41 = (EditText)findViewById(R.id.editText5);
+        EditText edit42 = (EditText)findViewById(R.id.editText6);
+        EditText edit43 = (EditText)findViewById(R.id.editText7);
+        EditText edit44 = (EditText)findViewById(R.id.editText9);
+        EditText edit45 = (EditText)findViewById(R.id.editText52);
+        EditText edit46 = (EditText)findViewById(R.id.editText51);
+        EditText edit47 = (EditText)findViewById(R.id.editText50);
+        EditText edit48 = (EditText)findViewById(R.id.editText48);
+        EditText edit49 = (EditText)findViewById(R.id.editText47);
+        EditText  edit50 = (EditText)findViewById(R.id.editText49);
+        EditText  edit51 = (EditText)findViewById(R.id.editText53);
+        EditText  edit52 = (EditText)findViewById(R.id.editText54);
+        EditText  edit53 = (EditText)findViewById(R.id.editText55);
+        EditText edit54 = (EditText)findViewById(R.id.editText60);
+        EditText edit55 = (EditText)findViewById(R.id.editText59);
+        EditText edit56 = (EditText)findViewById(R.id.editText58);
+        EditText edit57 = (EditText)findViewById(R.id.editText57);
+        EditText  edit58 = (EditText)findViewById(R.id.editText56);
+        EditText edit59 = (EditText)findViewById(R.id.editText61);
+        EditText edit60 = (EditText)findViewById(R.id.editText63);
+        EditText edit61 = (EditText)findViewById(R.id.editText64);
+        EditText edit62 = (EditText)findViewById(R.id.editText65);
+        EditText edit63 = (EditText)findViewById(R.id.editText75);
+        EditText edit64 = (EditText)findViewById(R.id.editText74);
+        EditText edit65 = (EditText)findViewById(R.id.editText69);
+        EditText edit66 = (EditText)findViewById(R.id.editText68);
+        EditText edit67 = (EditText)findViewById(R.id.editText66);
+        EditText edit68 = (EditText)findViewById(R.id.editText70);
+        EditText edit69 = (EditText)findViewById(R.id.editText71);
+        EditText edit70 = (EditText)findViewById(R.id.editText72);
+        EditText edit71 = (EditText)findViewById(R.id.editText73);
+        EditText edit72 = (EditText)findViewById(R.id.editText85);
+        EditText edit73 = (EditText)findViewById(R.id.editText84);
+        EditText edit74 = (EditText)findViewById(R.id.editText83);
+        EditText edit75 = (EditText)findViewById(R.id.editText81);
+        EditText edit76 = (EditText)findViewById(R.id.editText76);
+        EditText edit77 = (EditText)findViewById(R.id.editText77);
+        EditText edit78 = (EditText)findViewById(R.id.editText78);
+        EditText edit79 = (EditText)findViewById(R.id.editText79);
+        EditText edit80 = (EditText)findViewById(R.id.editText80);
+
+        EditText[] editTexts = {edit0, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, edit10, edit11, edit12, edit13, edit14, edit15, edit16, edit17, edit18, edit19, edit20, edit21, edit22, edit23, edit24, edit25, edit26, edit27, edit28, edit29, edit30, edit31, edit32, edit33, edit34, edit35, edit36, edit37, edit38, edit39, edit40, edit41, edit42, edit43, edit44, edit45, edit46, edit47, edit48, edit49, edit50, edit51, edit52, edit53, edit54, edit55, edit56, edit57, edit58, edit59, edit60, edit61, edit62, edit63, edit64, edit65, edit66, edit67, edit68, edit69, edit70, edit71, edit72, edit73, edit74, edit75, edit76, edit77, edit78, edit79, edit80};
+        String temp;
+
+        for (int i = 0; i < 81; i ++){
+            temp = editTexts[i].getText().toString();
+            if (!temp.equals("")){
+                nums.add(Integer.parseInt(temp));
+                if (nums.get(i) < 1 || nums.get(i) > 9){
+                    showErrorMessage(temp);
+                    return;
+                }
+            }
+            else {
+                nums.add(0);
+            }
+        }
+        
+        if (!solveSudoku(nums)){
+            return;
+        }
+        
+        String stringVersionOfNumber;
+        for (int i = 0; i < 81; i ++){
+            stringVersionOfNumber = Integer.toString (nums.get(i));
+            System.out.println(stringVersionOfNumber);
+            editTexts[i].setText(stringVersionOfNumber);
+        }
+    }
+
+    private void showErrorMessage(String erroneousEnteredValue) {
+        String errorMessage = "The value \" " + erroneousEnteredValue + "\" is not a valid sudoku number.";
+        Toast errorMessageToast = Toast.makeText(this, errorMessage, Toast.LENGTH_LONG);
+        errorMessageToast.show();
+    }
+
+    public boolean solveSudoku (ArrayList<Integer> nums) {
+        SudokuSolver ss = new SudokuSolver();
+        if (!ss.main(nums)){
+            Toast errorMessage = Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_LONG);
+            errorMessage.show();
+            return false;
+        }
+        return true;
+    }
+}
